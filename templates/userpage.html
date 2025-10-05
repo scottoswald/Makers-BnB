@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Page</title>
+  <link rel="stylesheet" href="/static/userpage_style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .inercontainer {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    /* User details dropdown on right side of header */
+    .user-details-container {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .user-icon-button {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: black;
+      transition: color 0.2s ease;
+    }
+    .user-icon-button:hover,
+    .user-icon-button:focus {
+      color: #333;
+      outline: none;
+    }
+    .user-details-content {
+      position: absolute;
+      top: 45px;
+      right: 0;
+      background: #F9F9F9;
+      border: 1px solid #ddd;
+      padding: 10px;
+      width: 180px;
+      text-align: center;
+      border-radius: 6px;
+      display: none;
+      user-select: text;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      z-index: 10;
+    }
+    .user-details-content.visible {
+      display: block;
+    }
+    /* Toolbar styles */
+    .toolbar {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 20px 0 40px;
+    }
+    .toolbar-button {
+      padding: 10px 20px;
+      font-weight: bold;
+      font-size: 1rem;
+      background: none;
+      border: none;
+      color: black;
+      cursor: pointer;
+      text-align: center;
+      width: 140px;
+      transition: border-bottom 0.2s ease;
+      border-bottom: 2px solid transparent;
+    }
+    .toolbar-button:hover {
+      border-bottom: 2px solid black;
+      background: none;
+      color: black;
+    }
+    .toolbar-button:focus {
+      outline: 2px solid black;
+      outline-offset: 2px;
+      border-bottom: none;
+    }
+    /* Form container and card */
+    .form-container {
+      display: flex;
+      justify-content: center;
+    }
+    .card {
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
+    }
+    /* Tooltip container for labels */
+    .tooltip {
+      position: relative;
+      margin-bottom: 15px;
+      display: block;
+    }
+    .tooltip label {
+      cursor: help;
+      display: block;
+      font-weight: bold;
+    }
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 220px;
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 6px 10px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      font-size: 0.85rem;
+      line-height: 1.2;
+    }
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .input-field {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    .dropdown-body {
+      margin-top: 10px;
+      text-align: center;
+    }
+    .submit-button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+    }
+    /* Dropdown content for Your Spaces */
+    #dropdown-content {
+      margin-top: 10px;
+      text-align: center;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="inercontainer">
+    <header>
+      <h1>Welcome {{ username }}</h1>
+      <div class="user-details-container">
+        <button class="user-icon-button" onclick="toggleUserDetails()" aria-label="Toggle user details">
+          <!-- Simple user icon SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-user" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M4 21v-2a4 4 0 0 1 3-3.87" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+        </button>
+        <div id="user-details-content" class="user-details-content" role="region" aria-live="polite" aria-label="User details">
+          <p><strong>Email:</strong><br> {{ email }}</p>
+          <p><strong>Phone:</strong><br> {{ phone_number }}</p>
+        </div>
+      </div>
+    </header>
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <form action="/find_space" method="GET" style="margin:0;">
+        <button type="submit" class="toolbar-button">Find Space</button>
+      </form>
+      <button class="toolbar-button" onclick="toggleDropdown()">Your Spaces ▾</button>
+      <button class="toolbar-button">Upcoming Holidays</button>
+    </div>
+    <!-- Your Spaces dropdown -->
+    <div id="dropdown-content" class="dropdown-body hidden">
+      {% if spaces %}
+        <ul>
+          {% for space in spaces %}
+            <li>{{ space.name }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>Currently you have no saved spaces.</p>
+      {% endif %}
+    </div>
+    <!-- Add Space Form -->
+    <div class="form-container" id="add-space-form">
+      <form action="/add_space" method="POST" class="card">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        <div class="tooltip">
+          <label for="name">Title:<br>
+            <input type="text" id="name" name="name" class="input-field" required>
+          </label>
+          <span class="tooltiptext">Name of your space</span>
+        </div>
+        <div class="tooltip">
+          <label for="description">Description:<br>
+            <input type="text" id="description" name="description" class="input-field" required maxlength="100">
+          </label>
+          <span class="tooltiptext">Input a short description of the style and amenities</span>
+        </div>
+        <div class="tooltip">
+          <label for="location">Location:<br>
+            <input type="text" id="location" name="location" class="input-field" required>
+          </label>
+          <span class="tooltiptext">Enter the location of the space</span>
+        </div>
+        <div class="tooltip">
+          <label for="type">Type:<br>
+            <input type="text" id="type" name="type" class="input-field" required>
+          </label>
+          <span class="tooltiptext">What type of space is this? e.g., Flat, Palace</span>
+        </div>
+        <div class="tooltip">
+          <label for="start_date">Availability Start Date:<br>
+            <input type="date" id="start_date" name="start_date" class="input-field" required>
+          </label>
+          <span class="tooltiptext">Select the first available date (dd/mm/yyyy)</span>
+        </div>
+        <div class="tooltip">
+          <label for="end_date">Availability End Date:<br>
+            <input type="date" id="end_date" name="end_date" class="input-field" required>
+          </label>
+          <span class="tooltiptext">Select the last available date (dd/mm/yyyy)</span>
+        </div>
+        <div class="tooltip">
+          <label for="price_per_night">Price per Night:<br>
+            <input type="number" id="price_per_night" name="price_per_night" step="5" class="input-field" required>
+          </label>
+          <span class="tooltiptext"></span>
+        </div>
+        <div class="submit-button-container">
+          <button type="submit" class="space-button">Submit Space</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    function toggleDropdown() {
+      const content = document.getElementById('dropdown-content');
+      content.classList.toggle('hidden');
+    }
+    function toggleUserDetails() {
+      const details = document.getElementById('user-details-content');
+      details.classList.toggle('visible');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MakersBnB</title>
+    <link rel="stylesheet" href="/static/homepage.css">
+</head>
+<body>
+    <audio controls>
+        <source src="/static/audio/jet2holiday_with_makersbnb_voice.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="form-background">
+        <h1>MAKERS BnB</h1>
+        <h2>World’s leading London-based BnB site!</h2>
+
+        <form action="/" method="post">
+            <p>
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username">
+            </p>
+            <p>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password">
+            </p>
+            <p>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class="flashes">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </p>
+            <p>
+                <input type="submit" value="Login">
+            </p>
+        </form>
+
+        <a href="/create_account"><input type="button" value="Create Account"></a>
+    </div>
+</body>
+</html>

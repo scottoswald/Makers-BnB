@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You</title>
+  <link rel="stylesheet" href="/static/userpage_style.css">
+  <style>
+    .center-button {
+      display: flex;
+      justify-content: center; /* center horizontally */
+      margin-top: 20px;
+    }
+    .center-text {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="inercontainer">
+    <header>
+      <h1>Thank You!</h1>
+    </header>
+    <div class="content center-text">
+      <p>Your details have been submitted successfully.</p>
+      <form action="/userpage" method="GET" class="center-button">
+        <button type="submit" class="rounded-button">Back to User Page</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

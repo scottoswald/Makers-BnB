@@ -1,0 +1,52 @@
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: #fefae0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 30px;
+  width: 350px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+input, select, button {
+  font-family: inherit;
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: 2px solid black;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.row input {
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+  background-color: white;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+}

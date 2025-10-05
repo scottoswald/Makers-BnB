@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Find Space</title>
+  <link rel="stylesheet" href="/static/find_space.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Find Space</h2>
+    
+    
+    <form action="/find_space" method="post">
+      >
+      <input type="text" name="location" placeholder="City/Area" required />
+      <input type="text" name="type" placeholder="Type (Apartment/Terraced/Detached)" required />
+      
+      <div class="row">
+        <input type="date" name="start_date" required />
+        <input type="date" name="end_date" required />
+      </div>
+      
+      <div class="row">
+        <input type="number" name="price_min" placeholder="Price (min)" required />
+        <input type="number" name="price_max" placeholder="Price (max)" required />
+      </div>
+
+      <button type="submit">Search Button</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,194 @@
+
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  background-color: #fefae0;
+}
+
+.inercontainer {
+  width: 500px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0px #000;
+}
+
+header {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.user-box {
+  text-align: left;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  background-color: white;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+form .space-button {
+  width: 249px !important; /* match whatever size looks right */
+  padding: 10px;
+  font-size: 16px;
+}
+
+.button-row button {
+  width: 48%;
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid black;
+  border-radius: 12px;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button-row button:hover {
+  background-color: black;
+  color: white;
+}
+
+.content-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.card {
+  flex: 0 0 45%;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 12px;
+  font-size: 14px;
+  background-color: white;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  border: 2px solid #000;
+  border-radius: 12px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+input, button, select {
+  font-family: inherit;
+  border: 2px solid #000;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 14px;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.rounded-button {
+  flex: 0 0 45%;
+  border: 2px solid black;
+  border-radius: 50%;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  background-color: white;
+}
+
+.space2 {
+  flex: 0 0 100%;
+  border: 2px solid black;
+  border-radius: 12px;
+  text-align: center;
+  padding: 15px;
+  margin-top: 10px;
+  font-weight: bold;
+  background-color: white;
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+.space2:hover {
+  background-color: black;
+  color: white;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: max-content;
+  max-width: 200px;
+  background-color: black;
+  color: #fff;
+  text-align: left;
+  padding: 6px 8px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 110%;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dropdown-container {
+  width: 100%;
+  margin-top: 10px;
+  border: 2px solid black;
+  border-radius: 12px;
+  overflow: hidden;
+  font-weight: bold;
+  background-color: white;
+}
+
+.dropdown-header {
+  padding: 15px;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-header:hover {
+  background-color: black;
+  color: white;
+}
+
+.dropdown-body {
+  padding: 15px;
+  background-color: white;
+  border-top: 1px solid #000;
+}
+
+.hidden {
+  display: none;
+}

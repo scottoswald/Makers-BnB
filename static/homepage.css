@@ -1,0 +1,108 @@
+
+ body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: #fefae0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 40px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.form-background {
+  width: 100%;
+  max-width: 400px;
+  background-image: url('/static/images/big_ben.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 30px;
+  border: 2px solid black;
+  border-radius: 20px;
+  box-shadow: 2px 2px 0 black;
+  margin-bottom: 20px;
+  color: white;
+  position: relative;
+}
+
+.form-background h1,
+.form-background h2,
+.form-background label {
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.form-background form {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 16px;
+  color: black;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"],
+input[type="button"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid black;
+  border-radius: 12px;
+  background-color: white;
+  font-family: inherit;
+  margin-top: 4px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  background-color: black;
+  color: white;
+}
+
+a input[type="button"] {
+  width: 100%;
+  text-align: center;
+}
+
+img {
+  border: 2px solid black;
+  border-radius: 12px;
+  display: block;
+  margin-top: 20px;
+  max-width: 100%;
+}
+
+.flashes {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+
+.flashes li {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}

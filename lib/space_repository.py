@@ -43,3 +43,7 @@ class SpaceRepository:
         )
         # Update to match new Space constructor and column names
         return [Space(row["id"], row["name"], row["description"], row["location"], row["type"], row["start_date"], row["end_date"], row["price_per_night"], row["user_id"]) for row in rows]
+
+    def delete(self, id):
+        self.connection.execute("DELETE FROM spaces WHERE id = %s", [id])
+        return None
